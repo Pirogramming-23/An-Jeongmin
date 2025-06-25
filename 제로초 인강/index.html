@@ -212,6 +212,20 @@
                     padding-left: 10px;
                     justify-content: center;
                     align-items: center;
+                    position: relative;
+                }
+                #search-svg::after{
+                    display: none;
+                }
+                #search>form:focus-within #search-svg::after{
+                    content: '';
+                    width: 1px;
+                    height: 20px;
+                    background-color: #e4e4e4;
+                    position: absolute;
+                    display: inline-block;
+                    right: 0;
+                    top: 20px;
                 }
                 #search-svg svg{
                     width: 24px;
@@ -221,7 +235,7 @@
                 #search-input{
                     width: 480px;
                     padding: 17px 0;
-                    font-size: 2rem;
+                    font-size: 1.7rem; /* 강의안 2rem */
                     line-height: 24px;
                     font-weight: bold;
                     border: none;
