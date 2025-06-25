@@ -75,12 +75,16 @@
         * {
             box-sizing: border-box;
         }
-        html, body, form{
+        html, body{
             font-size: 10.5px;
             line-height: 10.5px;
             margin: 0;
             padding: 0;
             font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+        }
+        form,ul{
+            margin: 0;
+            padding: 0;
         }
         #wrap{
             text-align: center;
@@ -323,14 +327,41 @@
                 </form>
             </div>
             <style>
+                #nav{
+                    margin-top: 12px;
+                }
                 #nav > ul{
                     display: flex;
                     list-style-type: none;
                     justify-content: center;
-                    font-size: 1.4rem;
+                    margin-top: 4px;
+                    font-size: 1.3rem;
+                    line-height: 20px;
                 }
                 #nav a{
                     text-decoration: none;
+                    text-align: center;
+                }
+                #nav a div{
+                    width: 50px;
+                    height: 50px;
+                    margin: 10px auto;
+                    margin-bottom: -10px;
+                    position: relative;
+                    text-align: center;
+                }
+                #nav a div::after{
+                    z-index: 1;
+                    position: relative;
+                    content: '';
+                    /* margin: 2px; */
+                    display: inline-block;
+                    background-image: url(https://pm.pstatic.net/resources/asset/sp_main.04eb92b7.png);
+                    background-size: 463px 442px;
+                    background-position: -205px -219px;
+                    background-repeat: no-repeat;
+                    width: 40px;
+                    height: 40px;
                 }
                 #nav a:visited{
                     color: black;
@@ -341,6 +372,69 @@
                 }
                 #nav li:nth-of-type(1){
                     margin-left: 0px;
+                }
+                #nav li a div::before{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: -3px;
+                    left: 0px;
+                    background-image: url(https://pm.pstatic.net/resources/asset/sp_main.04eb92b7.png);
+                    background-size: 463px 442px;
+                    background-position: -153px -142px;
+                    background-repeat: no-repeat;
+                    width: 50px;
+                    height: 50px;
+                }
+                #nav li:nth-of-type(2) a div::after{
+                    background-position: -41px -219px;
+                }
+                #nav li:nth-of-type(3) a div::after{
+                    background-position: 0px -219px;
+                }
+                #nav li:nth-of-type(4) a div::after{
+                    background-position: -41px -260px;
+                }
+                #nav li:nth-of-type(5) a div::after{
+                    background-position: -270px -205px;
+                }
+                #nav li:nth-of-type(6) a div::after{
+                    background-position: -123px -260px;
+                }
+                #nav li:nth-of-type(7) a div::after{
+                    background-position: 0px -260px;
+                }
+                #nav li:nth-of-type(8) a div::after{
+                    background-position: -270px 0px;
+                }
+                #nav li:nth-of-type(9) a div::after{
+                    background-position: -164px -260px;
+                }
+                #nav li:nth-of-type(10) a div {
+                    position: relative;
+                }
+
+                #nav li:nth-of-type(10) a div::after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+                    left: 4.5px;
+                    background-image: url("https://s.pstatic.net/static/www/mobile/edit/20240112_1095/upload_1705057885416AaxUM.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+                #nav li:nth-of-type(11) a div::after {
+                    background-position: -270px -164px;
+                }
+                #nav li a span {
+                    margin-top: 5px;
+                    display: block;
+                }
+                #nav li:nth-of-type(10) a span {
+                    margin-left: 1px;
                 }
             </style>
             <div id ="nav">
@@ -366,7 +460,7 @@
                                     <li>
                         <a href="">
                             <div></div>
-                            <span>쇼핑</span>
+                            <span>스토어</span>
                         </a>
                     </li>
                     <li>
@@ -399,7 +493,14 @@
                             <span>웹툰</span>
                         </a>
                     </li>
-                                    <li>
+                    </li>
+                        <li>
+                        <a href="">
+                            <div></div>
+                            <span>치지직</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="">
                             <div></div>
                             <span class="blind">더보기</span>
