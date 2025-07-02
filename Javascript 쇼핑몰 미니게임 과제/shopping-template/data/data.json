@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "type": "tshirt",
+      "gender": "female",
+      "size": "large",
+      "color": "yellow",
+      "image": "../img/yellow_s.png"
+    }
+  ]
+}
