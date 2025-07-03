@@ -8,7 +8,7 @@
 // 6단계 : 시도 다 하면 실패
 // 7단계 : 결과 표시하고 초기화
 
-attempts = {
+const attempts = {
     stage : 9
 };
 
