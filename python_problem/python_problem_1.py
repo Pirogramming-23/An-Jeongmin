@@ -1,7 +1,7 @@
 num = 0
 turn ='A'
 
-while True:
+while num<31:
     while True:
         
         nums = input(f"player{turn} - 부를 숫자의 개수를 입력하세요(1, 2, 3만 입력 가능) :")
