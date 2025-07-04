@@ -20,5 +20,11 @@ while num<31:
     for i in range(nums):
         num+=1
         print(f"player{turn}: {num}")
-    
+        
+        if num >= 31:
+            winner = 'B' if turn == 'A' else 'A'
+            print(f"player{winner} win!")
+            exit()
+
     turn = 'B' if turn == 'A' else 'A'
+
