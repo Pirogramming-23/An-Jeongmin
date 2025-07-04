@@ -1,32 +1,38 @@
+import random
+
 def brGame():
     num = 0
-    turn ='A'
+    turn = "computer"
 
-    while num<31:
-        while True:
-            
-            nums = input(f"player{turn} - 부를 숫자의 개수를 입력하세요(1, 2, 3만 입력 가능) :")
+    while num < 31:
+        if turn == "player":
+            while True:
+                
+                nums = input(f"부를 숫자의 개수를 입력하세요(1, 2, 3만 입력 가능) :")
 
-            if not nums.isdigit():
-                print("정수를 입력하세요")
-                continue
+                if not nums.isdigit():
+                    print("정수를 입력하세요")
+                    continue
 
-            nums = int(nums)
-            if nums not in [1,2,3]:
-                print("1,2,3 중 하나를 입력하세요")
-                continue
-
-            break
+                nums = int(nums)
+                if nums not in [1,2,3]:
+                    print("1,2,3 중 하나를 입력하세요")
+                    continue
+                
+                break
+        
+        else:
+            nums = random.randint(1,3)
 
         for i in range(nums):
             num+=1
-            print(f"player{turn}: {num}")
+            print(f"{turn}: {num}")
             
             if num >= 31:
-                winner = 'B' if turn == 'A' else 'A'
+                winner = 'computer' if turn == 'player' else 'player'
                 return winner
 
-        turn = 'B' if turn == 'A' else 'A'
+        turn = 'computer' if turn == 'player' else 'player'
 
 winner = brGame()
-print(f"player{winner} win!")
+print(f"{winner} win!")
