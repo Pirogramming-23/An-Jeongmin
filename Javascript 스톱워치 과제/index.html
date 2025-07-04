@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="stopwatch-container">
+        <div id="display" class="display">00:00</div>
+        <div class="buttons">
+        <button class="start">start</button>
+        <button class="stop">stop</button>
+        <button class="reset">reset</button>
+        </div>
+    </div>
+    <div class="record-container">
+        <div class="record-header">
+            <span class="label">구간 기록</span>
+            <button id="deleteChecked">선택 삭제</button>
+        </div>
+        <ul id="recordlist" class="recordlist"></ul>
+    </div>
+</body>
+<script src = "./index.js"></script>
+</html>
