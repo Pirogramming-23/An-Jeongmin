@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data"> <!-- 이미지를 전송을 위한 인코딩 방식 설정-->
+    {% csrf_token %}
+    {{ form.as_p }} <!-- <p> 태그로 알아서 감싸줌  -->
+    <button type="submit">저장</button>
+</form>
+{% endblock %}
