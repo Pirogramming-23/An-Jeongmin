@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>리뷰 게시판</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin : 0 30px;
+        }
+
+        h1 {
+            color: orange;
+        }
+
+        .review-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .review-card {
+            width: 200px;
+            padding: 8px;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .review-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .review-card h3 {
+            margin: 12px 0 6px;
+        }
+
+        .review-card p {
+            margin: 4px 0;
+            color: #555;
+        }
+
+        .add-btn {
+            float: right;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <a href="{% url 'review_list' %}" style="text-decoration: none; color: orange; font-size: 20px;">
+            <h1>my <span style="color:crimson">Movie</span> reviews</h1>
+        </a>
+
+        <a href="{% url 'review_create' %}" style="text-decoration: none;">
+            <h2 style="color: black; margin: 0;">리뷰 작성</h2>
+        </a>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
