@@ -21,7 +21,11 @@
       {% endif %}
       <div class="card-body">
         <a href="{% url 'ideas:idea_detail' idea.id %}" class="card-link">{{ idea.title }}</a>
-        <p>예상 개발툴: {{ idea.tool.name }}</p>
+        <p></p>
+        개발 툴: 
+        <a href="{% url 'tools:tool_detail' idea.tool.id %}" style="text-decoration: none; color: inherit; padding: 30px;">
+          {{ idea.tool.name }}
+        </a>
         <p>
         아이디어 관심도:
         <button onclick="updateInterest('{{ idea.id }}', 'decrease')">➖</button>

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import Tool
 from  .form import ToolForm
+from ideas.models import Idea
 
 # Create your views here.
 def tool_list(request):
@@ -12,8 +13,10 @@ def tool_list(request):
 
 def tool_detail(request, pk):
     tool = Tool.objects.get(id=pk)
+    related_ideas = Idea.objects.filter(tool=tool)
     context = {
-        "tool" : tool
+        "tool" : tool,
+        "related_ideas": related_ideas,
     }
     return render(request,"tools/tool_detail.html",context)
 

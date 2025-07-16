@@ -16,4 +16,19 @@
         <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?')" style="padding: 8px 16px; background-color: crimson; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">삭제</button>
     </form>
     </div>
+    <hr>
+    <h3>이 개발툴을 사용하는 아이디어</h3>
+    {% if related_ideas %}
+    <ul>
+        {% for idea in related_ideas %}
+        <li>
+            <a href="{% url 'ideas:idea_detail' idea.id %}" style="text-decoration: none; color: inherit; margin: 20px;">
+            {{ idea.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>이 개발툴을 사용하는 아이디어가 아직 없습니다.</p>
+    {% endif %}
 {% endblock %}
