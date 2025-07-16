@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Idea List</h2>
+  <span class="idea-sort-link">
+    <a href="?sort=name" style="margin-right: 10px; text-decoration: none; color: inherit;"> 🔤이름순</a>
+    <a href="?sort=created" style="margin-right: 10px; text-decoration: none; color: inherit;">🕒 등록일순</a>
+    <a href="?sort=like" style="text-decoration: none; color: inherit;">⭐ 찜하기순</a>
+  </span>
+
+<div class="row">
+  {% for idea in ideas %}
+  <div>
+    <div class="card">
+      <img src="{{ idea.image.url }}" class="card-img-top" alt="..." />
+      {% if user.is_authenticated %}
+        {% if idea in starred_ideas %}
+          <a href="{% url 'ideas:unstar' idea.id %}" class="star-icon-list">★</a>
+        {% else %}
+          <a href="{% url 'ideas:star' idea.id %}" class="star-icon-list">☆</a>
+        {% endif %}
+      {% endif %}
+      <div class="card-body">
+        <a href="{% url 'ideas:idea_detail' idea.id %}" class="card-link">{{ idea.title }}</a>
+        <p>예상 개발툴: {{ idea.tool.name }}</p>
+        <p>
+        아이디어 관심도:
+        <button onclick="updateInterest('{{ idea.id }}', 'decrease')">➖</button>
+        <span id="interest-{{ idea.id }}">{{ idea.interest }}</span>
+        <button onclick="updateInterest('{{ idea.id }}', 'increase')">➕</button>
+      </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<script>
+  function updateInterest(ideaId, action) {
+    fetch(`/ideas/${ideaId}/update_interest/`, {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": "{{ csrf_token }}",
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: `action=${action}`
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById(`interest-${ideaId}`).innerText = data.interest;
+    });
+  }
+</script>
+{% endblock %}

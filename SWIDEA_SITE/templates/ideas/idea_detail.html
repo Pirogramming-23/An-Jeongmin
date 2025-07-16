@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="title-center">Idea Detail</h2>
+    {% if user.is_authenticated %}
+      <div class="star-wrapper">
+        {% if is_starred %}
+          <a href="{% url 'ideas:unstar' idea.id %}" class="star-icon-detail">★ 찜 취소</a>
+        {% else %}
+          <a href="{% url 'ideas:star' idea.id %}" class="star-icon-detail">☆ 찜하기</a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+<div class="detail-wrapper">
+  <div class="image-section">
+    <img src="{{ idea.image.url }}" alt="image" class="detail-image" />
+  </div>
+
+  <div class="info-section">
+    <h3>{{ idea.title }}</h3>
+    <p>예상 개발툴: {{ idea.tool.name }}</p>
+    <p>아이디어 관심도: {{ idea.interest }}</p>
+    <p>{{ idea.content }}</p>
+
+    <div class="btn-group">
+      <a href="{% url 'ideas:idea_update' idea.id %}" style="padding: 8px 16px; background-color: gray; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px; font-size: 14px;">수정</a>
+      <a href="{% url 'ideas:idea_list' %}" style="padding: 8px 16px; background-color: rgb(0, 30, 255); color: white; text-decoration: none; border-radius: 5px; margin-right: 10px; font-size: 14px;">목록</a>
+      <form action="{% url 'ideas:idea_delete' idea.id %}" method="POST" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?')" style="padding: 8px 16px; background-color: crimson; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">삭제</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
