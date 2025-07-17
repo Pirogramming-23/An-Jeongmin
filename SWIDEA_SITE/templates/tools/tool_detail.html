@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>DevTool Detail</h2>
+<p>선택하신 개발툴의 상세정보입니다.</p>
+
+    <h3>{{ tool.name }}</h3>
+    <p><strong>분류:</strong> {{ tool.kind }}</p>
+    <p><strong>설명:</strong> {{ tool.content }}</p>
+
+    <div class="btn-group">
+    <a href="{% url 'tools:tool_update' tool.id %}" style="padding: 8px 16px; background-color: gray; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px; font-size: 14px;">수정</a>
+    <a href="{% url 'tools:tool_list' %}" style="padding: 8px 16px; background-color: rgb(0, 30, 255); color: white; text-decoration: none; border-radius: 5px; margin-right: 10px; font-size: 14px;">목록</a>
+    <form action="{% url 'tools:tool_delete' tool.id %}" method="POST" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?')" style="padding: 8px 16px; background-color: crimson; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">삭제</button>
+    </form>
+    </div>
+    <hr>
+    <h3>이 개발툴을 사용하는 아이디어</h3>
+    {% if related_ideas %}
+    <ul>
+        {% for idea in related_ideas %}
+        <li>
+            <a href="{% url 'ideas:idea_detail' idea.id %}" style="text-decoration: none; color: inherit; margin: 20px;">
+            {{ idea.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>이 개발툴을 사용하는 아이디어가 아직 없습니다.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>DevTool List</h2>
+<p>개발툴 목록을 확인하세요. 사용하실 개발툴을 선택하시면 상세 페이지로 이동합니다.</p>
+
+    <ul class="tool-list">
+    {% for tool in tools %}
+        <li class="tool-item">
+        <a href="{% url 'tools:tool_detail' tool.id %}" class="tool-link">
+            <strong>{{ tool.name }}</strong> - {{ tool.kind }}<br>
+            {{ tool.content|truncatewords:20 }}
+        </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
