@@ -1,0 +1,255 @@
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+  }
+
+  .main-container {
+    display: flex;
+    max-width: 1000px;
+    margin: auto;
+    padding-top: 30px;
+  }
+
+  .sidebar {
+    width: 220px;
+    padding-left: 20px;
+  }
+
+  .sidebar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .sidebar li {
+    margin: 15px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .feed {
+    flex: 1;
+    padding: 0 30px;
+  }
+
+  .story-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+  }
+
+  .story {
+    text-align: center;
+  }
+
+  .story-img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 2px solid #e1306c;
+  }
+
+  .profile-img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+  }
+
+  .post {
+    background: white;
+    border: 1px solid #dbdbdb;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 6px;
+  }
+
+  .post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .profile-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .post-img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .recommend {
+    width: 300px;
+    padding-top: 20px;
+  }
+
+  .my-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .dot-menu {
+    margin-left: auto;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .suggest-title {
+    font-weight: 600;
+    color: #8e8e8e;
+    font-size: 14px;
+    margin: 20px 0 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .suggest-title span {
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #262626;
+  }
+
+  .suggest-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .suggest-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .suggest-list img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .suggest-list div {
+    flex-grow: 1;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .suggest-list div strong {
+    font-weight: 600;
+    color: #262626;
+  }
+
+  .suggest-list div span {
+    color: #8e8e8e;
+    font-size: 12px;
+  }
+
+  .suggest-list button {
+    background: none;
+    border: none;
+    color: #0095f6;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .my-profile button {
+    background: none;
+    border: none;
+    color: #0095f6;
+    font-weight: 600;
+    margin-left: 100px;
+    font-size: 12px;
+  }
+
+  .post-actions .action-list {
+    display: flex;
+    gap: 16px;
+    padding: 0;
+    margin: 10px 0;
+    list-style: none;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .likes.update_like {
+    font-weight: 500;
+    font-size: 14px;
+    margin: 8px 0 4px;
+    padding: 0 8px;
+  }
+
+  .uploaded_comment_container {
+    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .upload_comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #262626;
+  }
+
+  .commet_user {
+    font-weight: bold;
+    margin-right: 6px;
+  }
+
+  .comment_content {
+    flex: 1;
+  }
+
+  .delete_comment_btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .comment-input-area {
+
+    display: flex;
+    align-items: center;
+    padding: 12px 8px;
+    gap: 8px;
+  }
+
+  .comment_input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+
+  .comment-input-area button {
+    border: none;
+    background: none;
+    color: #0095f6;
+    font-weight: bold;
+    cursor: pointer;
+  }
