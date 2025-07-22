@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>피로그래밍그램</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/home.js' %}"></script>
+</head>
+<body>
+    <div class="main-container">
+    <!-- 왼쪽 사이드바 -->
+        <div class="sidebar">
+        <div class="logo">Instagram</div>
+        <nav>
+            <ul>
+            <li><img width="24" height="24" src="https://img.icons8.com/material-sharp/24/home.png" alt="home"/>홈</li>
+            <li><img width="24" height="24" src="https://img.icons8.com/ios-glyphs/24/search.png" alt="search"/>검색</li>
+            <li><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/compass.png" alt="compass"/>탐색 탭</li>
+            <li><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/showing-video-frames.png" alt="showing-video-frames" /> 릴스</li>
+            <li><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/filled-sent.png" alt="filled-sent"/>메시지</li>
+            <li><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/hearts.png" alt="hearts"/>알림</li>
+            <li><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/add.png" alt="add"/>만들기</li>
+            <li><img width="24" height="24" src="https://img.icons8.com/material-sharp/24/user-male-circle.png" alt="user-male-circle"/>프로필</li>
+            <li><img width="24" height="24" src="https://img.icons8.com/ios-glyphs/24/menu--v3.png" alt="menu--v3"/>더 보기</li>
+            </ul>
+        </nav>
+        </div>
+
+        <!-- 피드 메인 -->
+        <main class="feed">
+            <div class="story-bar">
+                {% for i in story_range %}
+                <div class="story">
+                    <img src="{% static 'icons/story.jpg' %}" class="story-img">
+                    <p class="story-name">user{{ forloop.counter }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% for post in posts %}
+            <div class="post" data-post-id="{{ post.id }}">
+                <div class="post-header">
+                    <img src="{% static 'icons/profile.jpg' %}" class="profile-img">
+                    <strong>{{ post.user }}</strong>
+                    <span class="dot-menu">...</span>
+                </div>
+                <img src="{% static 'icons/post.png' %}" class="post-img">
+                <div class="post-actions">
+                    <ul class="action-list">
+                    <li>
+                        <button class="likebtn" onclick="onClickLike({{ post.id }})" style="background: none; border: none;">
+                        <img class="heart-icon" width="24" height="24" 
+                            src="https://img.icons8.com/material-outlined/24/hearts.png" 
+                            alt="좋아요 버튼" />
+                        </button>
+                    </li>
+                    <li><img width="24" height="24" src="https://img.icons8.com/fluency-systems-regular/24/chat.png" alt="chat"/></li>
+                    <li><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/filled-sent.png" alt="paper-plane"/></li>
+                    </ul>
+                </div>
+                <p class="likes update_like">좋아요 {{ post.like_count }}개</p>
+
+                <!-- 댓글 -->
+                <div class="uploaded_comment_container">
+                    {% for comment in post.comments.all %}
+                        <div class="upload_comment" data-comment-id="{{ comment.id }}">
+                            <span class="delete_comment_btn" onclick="onClickDelete(this)"></span>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- 댓글 입력 -->
+                <div class="comment-input-area">
+                    <input type="text" class="comment_input" placeholder="댓글 달기..." required>
+                    <button onclick="onClickComment()">게시</button>
+                </div>
+            </div>
+            {% endfor %}
+        </main>
+        
+        <!-- 추천 영역 -->
+        <div class="recommend">
+            <div class="my-profile">
+                <img src="{% static 'icons/story.jpg' %}" class="profile-img">
+                <div>
+                    <strong>piro</strong>
+                    <button>전환</button>
+                </div>
+            </div>
+            <p class="suggest-title">회원님을 위한 추천 <span>모두 보기</span></p>
+            <ul class="suggest-list">
+                {% for user in recommend_list %}
+                    <li>
+                        <img src="{% static 'icons/story.jpg' %}" class="profile-img" />
+                        <div>
+                            <strong>{{ user }}</strong>
+                            <span>회원님을 위한 추천</span>
+                        </div>
+                        <button>팔로우</button>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
